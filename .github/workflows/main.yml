@@ -58,7 +58,10 @@ jobs:
         run: make android
 
       - name: wasm compile
-        run: make wasm
+        run: make wasm      
+      
+      - name: wasm wasi compile
+        run: make wasi
 
   ########################
   # lint code
