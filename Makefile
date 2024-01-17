@@ -80,7 +80,7 @@ wasm:
 wasi:
 	# The appengine build tag is needed because of the jessevdk/go-flags library
 	# that has some OS specific terminal code that doesn't compile to WASM.
-	cd cmd/wasm-client; CGO_ENABLED=0 GOOS=wasip1 GOARCH=wasm go build -trimpath -ldflags="$(LDFLAGS)" -tags="$(RPC_TAGS)" -v -o wasm-client.wasi .
+	cd cmd/wasm-client; GOOS=wasip1 GOARCH=wasm go build -trimpath -ldflags="$(LDFLAGS)" -tags="$(RPC_TAGS)" -v -o wasm-client.wasi .
 	$(CP) cmd/wasm-client/wasm-client.wasi example/wasm-client.wasi
 
 clean:
