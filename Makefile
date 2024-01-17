@@ -76,6 +76,11 @@ wasm:
 	# that has some OS specific terminal code that doesn't compile to WASM.
 	cd cmd/wasm-client; CGO_ENABLED=0 GOOS=js GOARCH=wasm go build -trimpath -ldflags="$(LDFLAGS)" -tags="$(RPC_TAGS)" -v -o wasm-client.wasm .
 	$(CP) cmd/wasm-client/wasm-client.wasm example/wasm-client.wasm
+wasi:
+	# The appengine build tag is needed because of the jessevdk/go-flags library
+	# that has some OS specific terminal code that doesn't compile to WASM.
+	cd cmd/wasm-client; CGO_ENABLED=0 GOOS=wasip1 GOARCH=wasm go build -trimpath -ldflags="$(LDFLAGS)" -tags="$(RPC_TAGS)" -v -o wasm-client.wasi .
+	$(CP) cmd/wasm-client/wasm-client.wasi example/wasm-client.wasi
 
 clean:
 	@$(call print, "Cleaning up.")
