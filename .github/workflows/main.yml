@@ -59,7 +59,7 @@ jobs:
 
       - name: wasm compile
         run: make wasm      
-      
+      # test
       - name: wasm wasi compile
         run: make wasi
 
